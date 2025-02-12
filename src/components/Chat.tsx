@@ -1,11 +1,11 @@
 'use client'
 import { useState, useEffect } from "react";
 
-import { Input, Chip, Divider, Button, Spacer, ScrollShadow } from "@heroui/react"
+import { Input, Divider, Button, Spacer, ScrollShadow } from "@heroui/react"
 import Markdown from "react-markdown";
 
 const useChat = () => {
-  const [message, setMessage] = useState<any>(null)
+  const [message, setMessage] = useState<string | null>(null)
 
   const sendMessage = async (text: string) => {
     const response = await fetch('/api/agent', {

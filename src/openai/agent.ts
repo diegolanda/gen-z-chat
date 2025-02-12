@@ -1,7 +1,7 @@
 import { runLLM } from './llm'
 import { z } from 'zod'
-import { runTool } from './tools'
-import { addMessages, getMessages, saveToolResponse } from './memory'
+// import { runTool } from './tools'
+// import { addMessages, getMessages, saveToolResponse } from './memory'
 
 export const runAgent = async ({
   userMessage,
@@ -11,18 +11,23 @@ export const runAgent = async ({
   userMessage: string
   tools?: { name: string; parameters: z.AnyZodObject }[]
 }) => {
-  await addMessages([
-    {
-      role: 'user',
-      content: userMessage,
-    },
-  ])
+  // await addMessages([
+  //   {
+  //     role: 'user',
+  //     content: userMessage,
+  //   },
+  // ])
   while (true) {
-    const history = await getMessages()
+    // const history = await getMessages()
 
     try {
       const response = await runLLM({
-        messages: history,
+        messages: [
+          {
+            role: 'user',
+            content: userMessage,
+          },
+        ],
         tools,
       })
 
@@ -35,16 +40,15 @@ export const runAgent = async ({
         // return getMessages()
       }
 
-      if (response.tool_calls) {
-        const toolCall = response.tool_calls[0]
+      // if (response.tool_calls) {
+      //   const toolCall = response.tool_calls[0]
 
-        const toolResponse = await runTool(toolCall, userMessage)
-        await saveToolResponse(toolCall.id, toolResponse)
-      }
+      //   // const toolResponse = await runTool(toolCall, userMessage)
+      //   // await saveToolResponse(toolCall.id, toolResponse)
+      // }
 
-    } catch (error: any) {
-      console.error(error)
-      if (error.status === 429) {
+    } catch (error: unknown) {
+      if ((error as {status: number}).status === 429) {
         return {
           role: 'assistant',
           error: true,

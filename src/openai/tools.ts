@@ -1,6 +1,9 @@
 import type OpenAI from 'openai'
 
-const test = (input: any) => 'test tool'
+const test = (input: {
+  userMessage: string,
+  toolArgs: object,
+}) => 'test tool' + input.userMessage
 
 export const runTool = async (
   toolCall: OpenAI.Chat.Completions.ChatCompletionMessageToolCall,

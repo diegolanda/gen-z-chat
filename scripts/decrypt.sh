@@ -9,7 +9,8 @@ if [ -z "$DECRYPTION_KEY" ]; then
   exit 1
 fi
 
-# Decrypt the file
-openssl enc -d -aes-256-cbc -in secret_file.enc -out secret_file.txt -k "$DECRYPTION_KEY"
+# Decrypt the file using GPG
+gpg --batch --yes --passphrase "$DECRYPTION_KEY" --output src/openai/systemPrompt.ts --decrypt src/openai/systemPrompt.ts.gpg
 
 echo "Decryption completed successfully."
+

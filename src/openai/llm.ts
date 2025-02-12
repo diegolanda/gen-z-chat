@@ -1,4 +1,4 @@
-import { zodFunction } from 'openai/helpers/zod'
+// import { zodFunction } from 'openai/helpers/zod'
 import { z } from 'zod'
 
 import { openai, AIMessage } from './ai'
@@ -15,9 +15,9 @@ export const runLLM = async ({
   model = 'gpt-4o-mini',
   messages,
   temperature = 0.1,
-  tools = [],
+  // tools = [],
 }: LLMProps) => {
-  const formattedTools = tools?.map((tool) => zodFunction(tool))
+  // const formattedTools = tools?.map((tool) => zodFunction(tool))
   const response = await openai.chat.completions.create({
     model,
     messages: [

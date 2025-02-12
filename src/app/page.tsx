@@ -13,8 +13,8 @@ export default function Home() {
           width={60}
         />
         <div className="flex flex-col">
-          <p className="text-small text-default-500">Try: "How can I say Happy Birthday?",</p>
-          <p className="text-small text-default-500">"What does sigma mean?"</p>
+          <p className="text-small text-default-500">Try: &quot;How can I say Happy Birthday?&quot;,</p>
+          <p className="text-small text-default-500">&quot;What does sigma mean?&quot;</p>
         </div>
       </CardHeader>
       <Divider />
