@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "DECRYPTION_KEY": "@DECRYPTION_KEY"
+    },
+    "scripts": {
+      "build": "sh scripts/decrypt.sh && next build"
+    }
+  }
+}
