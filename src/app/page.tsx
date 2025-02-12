@@ -23,12 +23,7 @@ export default function Home() {
       </CardBody>
       <Divider />
       <CardFooter>
-        <Link isExternal showAnchorIcon href="https://github.com/heroui-inc/heroui">
-          Visit source code on GitHub.
-        </Link>
-      </CardFooter>
-      <CardFooter>
-        <Link isExternal showAnchorIcon href="https://github.com/heroui-inc/heroui">
+        <Link isExternal showAnchorIcon href="https://github.com/diegolanda/gen-z-chat">
           Visit source code on GitHub.
         </Link>
       </CardFooter>
